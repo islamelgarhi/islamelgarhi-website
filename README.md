@@ -34,7 +34,11 @@ npm run dev   # port 4590
 - Until cutover, production domain still serves the old Lovable app (edge IP 185.158.133.1).
 - islamelgarhi.com is DNS-blocked on Islam's home WiFi (Fortinet); test via
   `curl --resolve` / puppeteer host-resolver-rules or cellular.
-- Supabase project `ucwlyqygrvmxxwzkjkbb` ownership UNCONFIRMED (may be Lovable-managed).
-  Confirm it appears in Islam's own Supabase dashboard BEFORE deleting the Lovable project;
-  if it is Lovable's, migrate the `verdicts` table to Islam's own Supabase first and
-  update the env vars in Vercel + `.env`.
+- 2026-08-21 RESOLVED: `ucwlyqygrvmxxwzkjkbb` was Lovable-managed (Islam's account has no
+  access). The `verdicts` table now lives in Islam's OWN Supabase project
+  `tzygarqlmdprnokvflyz` (personal-vault, org /MIS) with the same schema and an
+  insert-only anon RLS policy. Site env vars (local + Vercel) point there.
+  The old Lovable-side table could not be read (insert-only RLS); it almost certainly held
+  only Claude's 2 test rows (book unpublished, betas silent), but if any real verdicts were
+  submitted pre-2026-08-21 they remain only in the Lovable project. Check inside Lovable's
+  data view before deleting. Lovable project deletion = Islam's manual step (permanent).
