@@ -8,7 +8,8 @@ const supabase = createClient(
 );
 
 const CREAM = "#efe9db";
-const AMAZON_URL = "#"; // placeholder until the book is live on Amazon
+const AMAZON_URL = "https://www.amazon.com/dp/B0HNKSVB4X"; // paperback
+const KINDLE_URL = "https://www.amazon.com/dp/B0HNKWT36N";
 
 const VERDICT_OPTIONS = [
   { value: "not_proven", label: "Not proven. I remain unconvinced." },
@@ -103,6 +104,40 @@ export default function App() {
           put your name to it. This is a sincere exchange between people who care about what is
           true, not an anonymous comment thread.
         </p>
+
+        <div
+          className="flex items-center gap-6 md:gap-8 mb-16 pb-16 border-b"
+          style={{ borderColor: "rgba(239, 233, 219, 0.15)" }}
+        >
+          <a href={AMAZON_URL} className="shrink-0">
+            <img
+              src="/brd-cover.jpg"
+              alt="Beyond Reasonable Doubt: The Case for Islam, by Islam A. Elgarhi"
+              width={798}
+              height={1197}
+              className="w-28 md:w-36 h-auto shadow-2xl"
+            />
+          </a>
+          <div>
+            <p className="text-sm opacity-70 mb-4">Haven&rsquo;t read it yet? Get the book on Amazon.</p>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={AMAZON_URL}
+                className="border px-5 py-2.5 text-xs uppercase tracking-[0.2em] hover:bg-white/5 transition-colors"
+                style={{ color: CREAM, borderColor: "rgba(239, 233, 219, 0.6)" }}
+              >
+                Paperback
+              </a>
+              <a
+                href={KINDLE_URL}
+                className="border px-5 py-2.5 text-xs uppercase tracking-[0.2em] hover:bg-white/5 transition-colors"
+                style={{ color: CREAM, borderColor: "rgba(239, 233, 219, 0.6)" }}
+              >
+                Kindle
+              </a>
+            </div>
+          </div>
+        </div>
 
         {submitted ? (
           <div
